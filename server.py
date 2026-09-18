@@ -130,8 +130,10 @@ class ConnectionManager:
             for p in public_state.get("participants", []):
                 p["lieIndex"] = None
 
-        public_msg = json.dumps({"type": "state_update", "data": public_state, "isModerator": False})
-        mod_msg = json.dumps({"type": "state_update", "data": full_state, "isModerator": True})
+        lan_ip = get_lan_ip()
+        server_info = {"ip": lan_ip, "port": 8000, "url": f"http://{lan_ip}:8000"}
+        public_msg = json.dumps({"type": "state_update", "data": public_state, "isModerator": False, "serverInfo": server_info})
+        mod_msg = json.dumps({"type": "state_update", "data": full_state, "isModerator": True, "serverInfo": server_info})
 
         tasks = []
         for ws in list(self.active_connections):
@@ -344,5 +346,6 @@ if __name__ == "__main__":
 
     threading.Thread(target=auto_open, daemon=True).start()
     uvicorn.run(app, host="0.0.0.0", port=port)
+
 
 

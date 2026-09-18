@@ -250,8 +250,12 @@
           <!-- QR Code Section -->
           <div class="mod-section">
             <h4>📱 QR-Code für Teilnehmer (Tablet / Beamer)</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
-              Alle Teilnehmer scannen diesen Barcode mit ihrem Smartphone / Tablet:
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+              <button type="button" class="btn-secondary" id="btn-qr-wifi" style="padding: 6px 12px; font-size: 0.85rem; background: var(--primary); color: #fff;">📶 Lokales WLAN</button>
+              <button type="button" class="btn-secondary" id="btn-qr-github" style="padding: 6px 12px; font-size: 0.85rem;">🌐 GitHub Online</button>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;" id="qr-desc-text">
+              Gäste scannen diesen Barcode (im selben WLAN oder per Hotspot):
             </p>
             <div class="qr-box">
               <div id="qrcode-container"></div>
@@ -298,4 +302,5 @@
   <script src="app.js"></script>
 </body>
 </html>
+
 

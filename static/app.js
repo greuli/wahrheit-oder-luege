@@ -243,7 +243,10 @@ function initLocalWS() {
       if (msg.type === "state_update") {
         gameState = msg.data;
         if (msg.isModerator !== undefined) isModerator = msg.isModerator;
-        setupQRCode(msg.serverInfo ? msg.serverInfo.url : window.location.href);
+        if (msg.serverInfo && msg.serverInfo.url) {
+          lanServerUrl = msg.serverInfo.url;
+        }
+        setupQRCode(lanServerUrl || (msg.serverInfo ? msg.serverInfo.url : window.location.href));
         renderApp();
       } else if (msg.type === "auth_success") {
         isModerator = true;
@@ -669,18 +672,37 @@ function renderModeratorCockpit() {
   });
 }
 
+const GITHUB_URL = "https://greuli.github.io/wahrheit-oder-luege/";
+let lanServerUrl = "";
+let activeQrTarget = "wifi";
+
 function setupQRCode(url) {
   const container = document.getElementById("qrcode-container");
   const urlEl = document.getElementById("mod-qr-url");
-  if (!container || !url) return;
+  if (!container) return;
 
-  urlEl.textContent = url;
+  let finalUrl = url;
+  if (activeQrTarget === "github") {
+    finalUrl = GITHUB_URL;
+  } else {
+    if (lanServerUrl) {
+      finalUrl = lanServerUrl;
+    } else if (url && !url.includes("localhost") && !url.includes("127.0.0.1")) {
+      finalUrl = url;
+    } else {
+      finalUrl = "http://192.168.178.25:8000";
+    }
+  }
+
+  if (!finalUrl) finalUrl = GITHUB_URL;
+
+  urlEl.textContent = finalUrl;
   container.innerHTML = "";
   if (window.QRCode) {
-    qrCodeInstance = new QRCode(container, {
-      text: url,
-      width: 180,
-      height: 180,
+    new QRCode(container, {
+      text: finalUrl,
+      width: 200,
+      height: 200,
       colorDark: "#271f1a",
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.M
@@ -809,5 +831,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Fetch LAN IP immediately
+  if (isLocalMode) {
+    fetch("/api/info")
+      .then(res => res.json())
+      .then(info => {
+        if (info && info.url) {
+          lanServerUrl = info.url;
+          if (activeQrTarget === "wifi") setupQRCode(lanServerUrl);
+        }
+      })
+      .catch(e => console.log("LAN fetch info:", e));
+  }
+
+  // QR Mode toggle buttons
+  const btnWifi = document.getElementById("btn-qr-wifi");
+  const btnGithub = document.getElementById("btn-qr-github");
+  if (btnWifi && btnGithub) {
+    btnWifi.addEventListener("click", () => {
+      activeQrTarget = "wifi";
+      btnWifi.style.background = "var(--primary)";
+      btnWifi.style.color = "#fff";
+      btnGithub.style.background = "#eaddd3";
+      btnGithub.style.color = "#4b3d32";
+      document.getElementById("qr-desc-text").textContent = "Gäste scannen diesen Barcode (im selben WLAN / Hotspot):";
+      setupQRCode(lanServerUrl || "http://192.168.178.25:8000");
+    });
+    btnGithub.addEventListener("click", () => {
+      activeQrTarget = "github";
+      btnGithub.style.background = "var(--primary)";
+      btnGithub.style.color = "#fff";
+      btnWifi.style.background = "#eaddd3";
+      btnWifi.style.color = "#4b3d32";
+      document.getElementById("qr-desc-text").textContent = "Gäste scannen diesen Barcode (über das Internet / GitHub):";
+      setupQRCode(GITHUB_URL);
+    });
+  }
+
   initNetworking();
 });
+
