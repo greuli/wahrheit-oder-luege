@@ -322,6 +322,10 @@ if (STATIC_DIR).exists():
 
 if __name__ == "__main__":
     import uvicorn
+    import webbrowser
+    import threading
+    import time
+
     lan_ip = get_lan_ip()
     port = 8000
     print("=" * 60)
@@ -330,5 +334,15 @@ if __name__ == "__main__":
     print(f" WLAN-Adresse (fuer Gaeste / QR-Code): http://{lan_ip}:{port}")
     print(f" Moderator PIN: {MODERATOR_PIN}")
     print("=" * 60)
+
+    def auto_open():
+        time.sleep(1.5)
+        try:
+            webbrowser.open(f"http://localhost:{port}")
+        except Exception:
+            pass
+
+    threading.Thread(target=auto_open, daemon=True).start()
     uvicorn.run(app, host="0.0.0.0", port=port)
+
 
