@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wahrheit oder Lüge | 2 Wahrheiten, 1 Lüge</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="qrcode.min.js"></script>
+  <script src="confetti.browser.min.js"></script>
+  <script src="mqtt.min.js"></script>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="logo-area">
+      <div class="logo-icon">🍂</div>
+      <div class="logo-text">
+        <h1 id="ui-app-title">Wahrheit oder Lüge</h1>
+        <span id="ui-app-subtitle">2 Wahrheiten, 1 Lüge</span>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="de" title="Deutsch">🇩🇪 DE</button>
+        <button class="lang-btn" data-lang="en" title="English">🇬🇧 EN</button>
+        <button class="lang-btn" data-lang="krj" title="Kinaray-a">🇵🇭 KRJ</button>
+      </div>
+
+      <!-- Moderator Button -->
+      <button class="btn-mod-icon" id="btn-open-moderator" title="Spielleiter Cockpit">
+        <span>🔐</span> <span id="ui-mod-label">Spielleiter</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Active User Profile Bar -->
+    <div class="user-badge-bar" id="user-badge-bar">
+      <div class="user-identity">
+        <div id="user-avatar-container">
+          <div class="user-avatar-placeholder">?</div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);" id="ui-logged-in-as">Eingeloggt als</div>
+          <strong style="font-size: 1.05rem;" id="user-display-name">Gast (Bitte auswählen)</strong>
+        </div>
+      </div>
+      <div class="user-score-badge">
+        <span id="user-score">0</span> <span id="ui-pts">Pkt</span>
+      </div>
+    </div>
+
+    <!-- Collapsible Participant Selector -->
+    <section class="accordion-box">
+      <div class="accordion-header" id="accordion-header">
+        <div class="accordion-title">
+          <span>👥</span> <span id="ui-participant-list-title">Teilnehmerliste (27 Spieler)</span>
+        </div>
+        <span class="accordion-arrow" id="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-content" id="accordion-content">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;" id="ui-select-prompt">
+          Tippe auf deinen Namen, um dich einzuloggen oder deine Aussagen zu bearbeiten:
+        </p>
+        <div class="participants-grid" id="participants-grid">
+          <!-- Dynamically filled with 27 participants -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB/STAGE: Statement Input View -->
+    <section class="setup-box" id="section-statement-setup" style="display: none;">
+      <h2 id="ui-setup-title">✍️ Deine 3 Aussagen</h2>
+      <p class="subtitle" id="ui-setup-desc">
+        Schreibe 3 Aussagen über dich: <strong>2 sind wahr</strong>, <strong>1 ist gelogen</strong>. Markiere deine Lüge!
+      </p>
+
+      <!-- Language selector for input -->
+      <div style="margin-bottom: 16px;">
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 6px;" id="ui-input-lang-label">
+          Sprache zum Ausfüllen wählen:
+        </span>
+        <div class="lang-tab-bar">
+          <button class="lang-input-tab active" data-inlang="de">🇩🇪 Deutsch</button>
+          <button class="lang-input-tab" data-inlang="en">🇬🇧 English</button>
+          <button class="lang-input-tab" data-inlang="krj">🇵🇭 Kinaray-a</button>
+        </div>
+      </div>
+
+      <!-- Statement 1 -->
+      <div class="statement-input-card is-truth" id="card-input-0">
+        <div class="input-header">
+          <span class="input-title" id="ui-statement-1-lbl">Aussage 1</span>
+          <button type="button" class="toggle-lie-btn" data-index="0" id="lie-btn-0">Wahrheit</button>
+        </div>
+        <textarea class="statement-textarea" id="input-stmt-0" placeholder="z. B. Ich bin schon einmal aus einem Flugzeug gesprungen."></textarea>
+      </div>
+
+      <!-- Statement 2 -->
+      <div class="statement-input-card is-truth" id="card-input-1">
+        <div class="input-header">
+          <span class="input-title" id="ui-statement-2-lbl">Aussage 2</span>
+          <button type="button" class="toggle-lie-btn" data-index="1" id="lie-btn-1">Wahrheit</button>
+        </div>
+        <textarea class="statement-textarea" id="input-stmt-1" placeholder="z. B. Ich habe 5 Geschwister."></textarea>
+      </div>
+
+      <!-- Statement 3 -->
+      <div class="statement-input-card is-lie" id="card-input-2">
+        <div class="input-header">
+          <span class="input-title" id="ui-statement-3-lbl">Aussage 3</span>
+          <button type="button" class="toggle-lie-btn" data-index="2" id="lie-btn-2">Lüge ❌</button>
+        </div>
+        <textarea class="statement-textarea" id="input-stmt-2" placeholder="z. B. Ich kann perfekt Spanisch sprechen."></textarea>
+      </div>
+
+      <button class="btn-primary" id="btn-save-statements">💾 Aussagen speichern</button>
+    </section>
+
+    <!-- LIVE GAME ROUND STAGE -->
+    <section class="round-stage" id="section-game-stage">
+      
+      <!-- Waiting state -->
+      <div id="stage-waiting" style="text-align: center; padding: 40px 20px; background: #fff; border-radius: 18px; box-shadow: var(--shadow-sm);">
+        <div style="font-size: 3.5rem; margin-bottom: 12px;">⏳</div>
+        <h3 id="ui-waiting-title" style="font-size: 1.3rem; margin-bottom: 8px;">Warte auf die nächste Spielrunde...</h3>
+        <p id="ui-waiting-desc" style="color: var(--text-muted); font-size: 0.95rem;">
+          Der Spielleiter wählt gleich den nächsten Teilnehmer aus. Mache dich bereit zum Raten!
+        </p>
+      </div>
+
+      <!-- Active Round State -->
+      <div id="stage-active-round" style="display: none;">
+        
+        <div class="stage-hero">
+          <div id="active-player-avatar-wrap">
+            <!-- Image / Avatar of active participant -->
+          </div>
+          <h2 id="active-player-title">Princess ist an der Reihe!</h2>
+          <div class="stage-prompt" id="stage-prompt-text">
+            Welche Aussage ist die Lüge? Kreuze an!
+          </div>
+        </div>
+
+        <!-- The 3 Autumn Index Cards -->
+        <div class="cards-container" id="cards-container">
+          
+          <!-- Card 0 -->
+          <div class="index-card" data-card-idx="0" id="index-card-0">
+            <div class="card-content-wrap">
+              <div class="card-header-row">
+                <span class="card-tag">Karte A</span>
+                <span class="card-vote-indicator" id="card-vote-tag-0"></span>
+              </div>
+              <div class="card-statement-text" id="stmt-text-0">Lade Aussage...</div>
+              <div class="card-sub-translation" id="stmt-sub-0" style="display: none;"></div>
+              <div class="card-stamp" id="card-stamp-0"></div>
+            </div>
+          </div>
+
+          <!-- Card 1 -->
+          <div class="index-card" data-card-idx="1" id="index-card-1">
+            <div class="card-content-wrap">
+              <div class="card-header-row">
+                <span class="card-tag">Karte B</span>
+                <span class="card-vote-indicator" id="card-vote-tag-1"></span>
+              </div>
+              <div class="card-statement-text" id="stmt-text-1">Lade Aussage...</div>
+              <div class="card-sub-translation" id="stmt-sub-1" style="display: none;"></div>
+              <div class="card-stamp" id="card-stamp-1"></div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="index-card" data-card-idx="2" id="index-card-2">
+            <div class="card-content-wrap">
+              <div class="card-header-row">
+                <span class="card-tag">Karte C</span>
+                <span class="card-vote-indicator" id="card-vote-tag-2"></span>
+              </div>
+              <div class="card-statement-text" id="stmt-text-2">Lade Aussage...</div>
+              <div class="card-sub-translation" id="stmt-sub-2" style="display: none;"></div>
+              <div class="card-stamp" id="card-stamp-2"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Result Card after Reveal -->
+        <div class="round-result-card" id="round-result-card" style="display: none;">
+          <h3 id="result-headline" style="font-size: 1.3rem; margin-bottom: 6px;">Auflösung!</h3>
+          <p id="result-message" style="font-size: 1rem; color: var(--text-dark);">
+            Die richtige Lüge war Karte B!
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODERATOR COCKPIT MODAL -->
+  <div class="modal-overlay" id="mod-modal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>Spielleiter Cockpit 🔐</h3>
+        <button class="modal-close" id="mod-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- PIN check if not authorized -->
+        <div id="mod-auth-screen">
+          <p style="margin-bottom: 12px; font-weight: 600;">Bitte Moderator-PIN eingeben:</p>
+          <div style="display: flex; gap: 10px; margin-bottom: 14px;">
+            <input type="password" id="mod-pin-input" placeholder="PIN (z.B. 1234)" style="flex: 1; padding: 12px; border-radius: 10px; border: 2px solid #ecd8c8; font-size: 1.1rem;">
+            <button class="btn-primary" id="btn-mod-login" style="width: auto; padding: 12px 24px;">Anmelden</button>
+          </div>
+          <p id="mod-pin-error" style="color: var(--danger); font-weight: 600; display: none;">Falscher PIN!</p>
+        </div>
+
+        <!-- Moderator Controls (visible after PIN) -->
+        <div id="mod-dashboard" style="display: none;">
+          
+          <!-- Round Control Section -->
+          <div class="mod-section">
+            <h4>🎮 Rundensteuerung</h4>
+            <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 6px;">
+              Wer ist als nächstes an der Reihe?
+            </label>
+            <select class="select-styled" id="mod-player-select">
+              <!-- Dynamically populated -->
+            </select>
+
+            <div class="mod-controls-row">
+              <button class="btn-primary" id="btn-mod-start-round" style="flex: 1;">▶️ Runde starten</button>
+              <button class="btn-secondary" id="btn-mod-reveal" style="flex: 1; background: #28804a; color: #fff;">🎉 Jetzt auflösen!</button>
+              <button class="btn-secondary" id="btn-mod-next-round" style="flex: 1;">⏭️ Nächste Runde</button>
+            </div>
+
+            <div style="margin-top: 14px; padding: 10px; background: #fdf6ec; border-radius: 10px; font-size: 0.9rem;">
+              <strong>Live-Status:</strong> <span id="mod-voting-status">Keine Runde aktiv</span>
+            </div>
+          </div>
+
+          <!-- QR Code Section -->
+          <div class="mod-section">
+            <h4>📱 QR-Code für Teilnehmer (Tablet / Beamer)</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
+              Alle Teilnehmer scannen diesen Barcode mit ihrem Smartphone / Tablet:
+            </p>
+            <div class="qr-box">
+              <div id="qrcode-container"></div>
+              <div class="qr-url-text" id="mod-qr-url">http://...</div>
+            </div>
+          </div>
+
+          <!-- Leaderboard Section -->
+          <div class="mod-section">
+            <h4>🏆 Live-Rangliste (Punkte)</h4>
+            <div style="max-height: 250px; overflow-y: auto;">
+              <table class="leaderboard-table">
+                <thead>
+                  <tr>
+                    <th>Rang</th>
+                    <th>Teilnehmer</th>
+                    <th>Punkte</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                  <!-- Filled dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Maintenance Section -->
+          <div class="mod-section">
+            <h4>⚙️ Verwaltung</h4>
+            <div class="mod-controls-row">
+              <a href="/api/export" download="spiel_daten.json" class="btn-secondary" style="text-decoration: none; text-align: center;">
+                💾 JSON-Datenbank exportieren
+              </a>
+              <button class="btn-danger" id="btn-mod-reset-scores">🔄 Punktestand zurücksetzen</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

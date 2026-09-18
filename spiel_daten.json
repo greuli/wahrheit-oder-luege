@@ -1,0 +1,689 @@
+{
+  "title": "Wahrheit oder Lüge",
+  "moderatorPin": "1234",
+  "participants": [
+    {
+      "id": "p_1",
+      "name": "Princess",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_2",
+      "name": "Chris P",
+      "sticker": "assets/stickers/Christian Pohl.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_3",
+      "name": "Cyro",
+      "sticker": "assets/stickers/Cyro.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_4",
+      "name": "Cobie",
+      "sticker": "assets/stickers/Cobie.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_5",
+      "name": "Mercy",
+      "sticker": "assets/stickers/Mercy.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_6",
+      "name": "Neil",
+      "sticker": "assets/stickers/Neil.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_7",
+      "name": "Nick",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_8",
+      "name": "Delia",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_9",
+      "name": "Avelino",
+      "sticker": "assets/stickers/Avelino Alcantara.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_10",
+      "name": "Jessica",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_11",
+      "name": "Daeve",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_12",
+      "name": "Freundin",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_13",
+      "name": "Freund",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_14",
+      "name": "Chit",
+      "sticker": "assets/stickers/Tante Chit.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_15",
+      "name": "Rupert",
+      "sticker": "assets/stickers/Ruppert K.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_16",
+      "name": "Christian K.",
+      "sticker": "assets/stickers/Christian König.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_17",
+      "name": "Christine",
+      "sticker": "assets/stickers/Christine.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_18",
+      "name": "Girly 1",
+      "sticker": "assets/stickers/Christines Tochter.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_19",
+      "name": "Girly 2",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_20",
+      "name": "Clemens",
+      "sticker": "assets/stickers/Clemens.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_21",
+      "name": "Carmela",
+      "sticker": "assets/stickers/Carmela.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_22",
+      "name": "Patrick-w",
+      "sticker": "assets/stickers/Patrick mit Malia.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_23",
+      "name": "Leonie",
+      "sticker": "assets/stickers/Leonie.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_24",
+      "name": "Malia",
+      "sticker": "assets/stickers/Patrick mit Malia.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_25",
+      "name": "Emily",
+      "sticker": "assets/stickers/Emily.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_26",
+      "name": "Viktoria",
+      "sticker": "",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    },
+    {
+      "id": "p_27",
+      "name": "Christian",
+      "sticker": "assets/stickers/Christian.png",
+      "statements": {
+        "de": [
+          "",
+          "",
+          ""
+        ],
+        "en": [
+          "",
+          "",
+          ""
+        ],
+        "krj": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "lieIndex": 0,
+      "hasSubmitted": false
+    }
+  ],
+  "currentRound": {
+    "activeParticipantId": null,
+    "status": "waiting",
+    "votes": {}
+  },
+  "scores": {
+    "p_1": 0,
+    "p_2": 0,
+    "p_3": 0,
+    "p_4": 0,
+    "p_5": 0,
+    "p_6": 0,
+    "p_7": 0,
+    "p_8": 0,
+    "p_9": 0,
+    "p_10": 0,
+    "p_11": 0,
+    "p_12": 0,
+    "p_13": 0,
+    "p_14": 0,
+    "p_15": 0,
+    "p_16": 0,
+    "p_17": 0,
+    "p_18": 0,
+    "p_19": 0,
+    "p_20": 0,
+    "p_21": 0,
+    "p_22": 0,
+    "p_23": 0,
+    "p_24": 0,
+    "p_25": 0,
+    "p_26": 0,
+    "p_27": 0
+  },
+  "history": []
+}
