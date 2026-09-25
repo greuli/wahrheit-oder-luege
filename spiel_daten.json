@@ -5,7 +5,7 @@
     {
       "id": "p_1",
       "name": "Princess",
-      "sticker": "assets/stickers/Princess.jpeg",
+      "sticker": "assets/stickers/Princess.png",
       "statements": {
         "de": [
           "",
@@ -149,7 +149,7 @@
     {
       "id": "p_7",
       "name": "Nick",
-      "sticker": "assets/stickers/Nick.jpg",
+      "sticker": "assets/stickers/Nick.png",
       "statements": {
         "de": [
           "",
@@ -173,7 +173,7 @@
     {
       "id": "p_8",
       "name": "Delia",
-      "sticker": "assets/stickers/Delia.jpeg",
+      "sticker": "assets/stickers/Delia.png",
       "statements": {
         "de": [
           "",
@@ -221,7 +221,7 @@
     {
       "id": "p_10",
       "name": "Jessica",
-      "sticker": "assets/stickers/Jessica.jpg",
+      "sticker": "assets/stickers/Jessica.png",
       "statements": {
         "de": [
           "",
@@ -245,7 +245,7 @@
     {
       "id": "p_11",
       "name": "Daeve",
-      "sticker": "assets/stickers/Daeve.jpg",
+      "sticker": "assets/stickers/Daeve.png",
       "statements": {
         "de": [
           "",
@@ -269,7 +269,7 @@
     {
       "id": "p_12",
       "name": "Freundin",
-      "sticker": "assets/stickers/Friends.jpg",
+      "sticker": "assets/stickers/Freundin.png",
       "statements": {
         "de": [
           "",
@@ -293,7 +293,7 @@
     {
       "id": "p_13",
       "name": "Freund",
-      "sticker": "assets/stickers/Friends.jpg",
+      "sticker": "assets/stickers/Freund.png",
       "statements": {
         "de": [
           "",
@@ -413,7 +413,7 @@
     {
       "id": "p_18",
       "name": "Girly 1",
-      "sticker": "assets/stickers/Girly.jpg",
+      "sticker": "assets/stickers/Girly 1.png",
       "statements": {
         "de": [
           "",
@@ -437,7 +437,7 @@
     {
       "id": "p_19",
       "name": "Girly 2",
-      "sticker": "assets/stickers/Friends.jpg",
+      "sticker": "assets/stickers/Girly 2.png",
       "statements": {
         "de": [
           "",
@@ -605,7 +605,7 @@
     {
       "id": "p_26",
       "name": "Viktoria",
-      "sticker": "assets/stickers/Viktoria.jpg",
+      "sticker": "assets/stickers/Viktoria.png",
       "statements": {
         "de": [
           "",
