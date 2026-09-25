@@ -5,7 +5,7 @@
     {
       "id": "p_1",
       "name": "Princess",
-      "sticker": "",
+      "sticker": "assets/stickers/Princess.jpeg",
       "statements": {
         "de": [
           "",
@@ -149,7 +149,7 @@
     {
       "id": "p_7",
       "name": "Nick",
-      "sticker": "",
+      "sticker": "assets/stickers/Nick.jpg",
       "statements": {
         "de": [
           "",
@@ -173,7 +173,7 @@
     {
       "id": "p_8",
       "name": "Delia",
-      "sticker": "",
+      "sticker": "assets/stickers/Delia.jpeg",
       "statements": {
         "de": [
           "",
@@ -221,7 +221,7 @@
     {
       "id": "p_10",
       "name": "Jessica",
-      "sticker": "",
+      "sticker": "assets/stickers/Jessica.jpg",
       "statements": {
         "de": [
           "",
@@ -245,7 +245,7 @@
     {
       "id": "p_11",
       "name": "Daeve",
-      "sticker": "",
+      "sticker": "assets/stickers/Daeve.jpg",
       "statements": {
         "de": [
           "",
@@ -269,7 +269,7 @@
     {
       "id": "p_12",
       "name": "Freundin",
-      "sticker": "",
+      "sticker": "assets/stickers/Friends.jpg",
       "statements": {
         "de": [
           "",
@@ -293,7 +293,7 @@
     {
       "id": "p_13",
       "name": "Freund",
-      "sticker": "",
+      "sticker": "assets/stickers/Friends.jpg",
       "statements": {
         "de": [
           "",
@@ -413,7 +413,7 @@
     {
       "id": "p_18",
       "name": "Girly 1",
-      "sticker": "assets/stickers/Christines Tochter.png",
+      "sticker": "assets/stickers/Girly.jpg",
       "statements": {
         "de": [
           "",
@@ -437,7 +437,7 @@
     {
       "id": "p_19",
       "name": "Girly 2",
-      "sticker": "",
+      "sticker": "assets/stickers/Friends.jpg",
       "statements": {
         "de": [
           "",
@@ -605,7 +605,7 @@
     {
       "id": "p_26",
       "name": "Viktoria",
-      "sticker": "",
+      "sticker": "assets/stickers/Viktoria.jpg",
       "statements": {
         "de": [
           "",
@@ -652,8 +652,8 @@
     }
   ],
   "currentRound": {
-    "activeParticipantId": null,
-    "status": "waiting",
+    "activeParticipantId": "p_1",
+    "status": "voting",
     "votes": {}
   },
   "scores": {
